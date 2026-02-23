@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lorenzo Califano — Computer Engineering Student Portfolio">
+    <title>Lorenzo Califano — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">LC</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+            <p class="hero-greeting">Hi, I'm</p>
+            <h1 class="hero-name">Lorenzo Califano</h1>
+            <p class="hero-tagline">Computer Engineering Student</p>
+            <a href="#projects" class="hero-cta">Explore my projects</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="section-container">
+            <h2 class="section-title">About me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I'm a Computer Engineering student with a strong passion for
+                        software development and solving complex problems. I enjoy
+                        exploring new technologies and challenging myself with projects
+                        spanning from software engineering to electronics and control systems.
+                    </p>
+                    <p>
+                        Throughout my academic path I've built cross-disciplinary skills
+                        by working on technical reports, group projects, and hands-on
+                        lab sessions — always looking for the best tool to get the job done.
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <span class="skill-icon">&#60;/&#62;</span>
+                        <span class="skill-label">Software Dev</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">&#9881;</span>
+                        <span class="skill-label">Problem Solving</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">&#128200;</span>
+                        <span class="skill-label">Data Analysis</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">&#9889;</span>
+                        <span class="skill-label">Electronics</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">&#128101;</span>
+                        <span class="skill-label">Teamwork</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">&#128218;</span>
+                        <span class="skill-label">Research</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="section-container">
+            <h2 class="section-title">University Projects</h2>
+            <p class="section-subtitle">A selection of coursework and reports from my academic journey</p>
+            <div class="projects-grid">
+
+                <!-- Software Engineering -->
+                <div class="project-card" data-color="blue">
+                    <div class="card-accent"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">Software Engineering</h3>
+                        <p class="card-desc">
+                            Full software development lifecycle report — from requirements
+                            analysis to design and implementation — following established
+                            engineering methodologies.
+                        </p>
+                        <div class="card-tools">
+                            <span class="tool-badge">Enterprise Architect</span>
+                            <span class="tool-badge">Python</span>
+                            <span class="tool-badge">SQL</span>
+                            <span class="tool-badge">Docker</span>
+                            <span class="tool-badge">GitHub</span>
+                        </div>
+                        <button class="card-btn"
+                            onclick="openPdf('Progetti/Relazione Ingegneria del Software.pdf', this)">
+                            Read the report &rarr;
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Electrical Engineering -->
+                <div class="project-card" data-color="red">
+                    <div class="card-accent"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">Electrical Engineering</h3>
+                        <p class="card-desc">
+                            Study and analysis of electrical circuits, with a focus on
+                            fundamental laws, solving methods, and simulations of linear
+                            and non-linear networks. Includes a PID control project in
+                            MATLAB for a quadrotor drone performing takeoff, navigation,
+                            and landing.
+                        </p>
+                        <div class="card-tools">
+                            <span class="tool-badge">MATLAB</span>
+                            <span class="tool-badge">PID Control</span>
+                        </div>
+                        <button class="card-btn" onclick="openPdf('Progetti/Relazione Elettrotecnica.pdf', this)">
+                            Read the report &rarr;
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Electromagnetics -->
+                <div class="project-card" data-color="green">
+                    <div class="card-accent"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">Electromagnetics for Information Transmission</h3>
+                        <p class="card-desc">
+                            Analysis of electromagnetic principles behind information
+                            transmission, with studies on electromagnetic waves, antennas,
+                            and signal propagation.
+                        </p>
+                        <div class="card-tools">
+                            <span class="tool-badge">COMSOL Multiphysics</span>
+                        </div>
+                        <button class="card-btn"
+                            onclick="openPdf('Progetti/Relazione Elettromagnetismo per la Trasmissione dell\'Informazione.pdf', this)">
+                            Read the report &rarr;
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Databases (in progress) -->
+                <div class="project-card in-progress" data-color="yellow">
+                    <div class="card-accent"></div>
+                    <div class="card-body">
+                        <span class="card-status">In progress</span>
+                        <h3 class="card-title">Databases</h3>
+                        <p class="card-desc">
+                            Database design and management course — covering relational
+                            models, normalization, query optimization, and practical
+                            SQL development.
+                        </p>
+                        <div class="card-tools">
+                            <span class="tool-badge">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automation Laboratory -->
+                <div class="project-card" data-color="purple">
+                    <div class="card-accent"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">Automation Laboratory</h3>
+                        <p class="card-desc">
+                            Building a two-wheeled self-balancing robot with PID control
+                            that reacts to external stimuli. Developing embedded firmware
+                            on the STM32H755ZI-Q microcontroller using STM32CubeIDE.
+                        </p>
+                        <div class="card-tools">
+                            <span class="tool-badge">C</span>
+                            <span class="tool-badge">STM32CubeIDE</span>
+                            <span class="tool-badge">STM32H755ZI-Q</span>
+                            <span class="tool-badge">PID Control</span>
+                        </div>
+                        <button class="card-btn"
+                            onclick="openPdf('Progetti/Relazione Laboratorio di Automazione.pdf', this)">
+                            Read the report &rarr;
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ShieldUp — Business Project -->
+                <div class="project-card" data-color="orange">
+                    <div class="card-accent"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">ShieldUp — "Impresa in Aula"</h3>
+                        <p class="card-desc">
+                            Developed an innovative solution to a personal safety issue
+                            as part of a university business course. As team leader of
+                            a group of 6 students, I organized the team, assigned roles,
+                            and coordinated the workflow. The project won first place in
+                            the course and reached the top 3 in the regional competition.
+                        </p>
+                        <div class="card-tools">
+                            <span class="tool-badge">Business Planning</span>
+                            <span class="tool-badge">Team Leadership</span>
+                            <span class="tool-badge">1st Place</span>
+                        </div>
+                        <a class="card-btn" href="https://www.linktr.ee/shieldup" target="_blank" rel="noopener">
+                            Visit the project &rarr;
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Get in touch</h2>
+            <p class="contact-text">
+                Want to know more? Drop me a line!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:info.lorenzocalifano@gmail.com" class="contact-item">
+                    <span class="contact-icon">&#9993;</span>
+                    <span>info.lorenzocalifano@gmail.com</span>
+                </a>
+                <a href="https://github.com/lorenzocalifano" target="_blank" rel="noopener" class="contact-item">
+                    <span class="contact-icon">&#128187;</span>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Lorenzo Califano.</p>
+    </footer>
+
+    <!-- PDF Modal -->
+    <div id="pdf-modal" class="modal-overlay" onclick="closePdfOutside(event)">
+        <div class="modal-container">
+            <div class="modal-header">
+                <span id="modal-title"></span>
+                <button class="modal-close" onclick="closePdf()">&times;</button>
+            </div>
+            <iframe id="pdf-viewer" src="" title="PDF Viewer"></iframe>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
