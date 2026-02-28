@@ -1,0 +1,1026 @@
+\documentclass[a4paper,12pt]{report}
+
+% ---- Pacchetti ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage{tocloft}
+
+% ---- Colori personalizzati ----
+\definecolor{googleblue}{HTML}{4285F4}
+\definecolor{googlered}{HTML}{EA4335}
+\definecolor{googleyellow}{HTML}{FBBC05}
+\definecolor{googlegreen}{HTML}{34A853}
+\definecolor{googlepurple}{HTML}{A142F4}
+\definecolor{codebg}{HTML}{1E1E27}
+\definecolor{codetext}{HTML}{E4E4E8}
+\definecolor{darkbg}{HTML}{0F0F13}
+\definecolor{teal}{HTML}{00BCD4}
+\definecolor{pink}{HTML}{E91E8C}
+
+% ---- Configurazione listings ----
+\lstdefinestyle{htmlstyle}{
+    language=HTML,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg!10},
+    keywordstyle=\color{googleblue}\bfseries,
+    stringstyle=\color{googlegreen},
+    commentstyle=\color{gray}\itshape,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{gray!30},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=8pt,
+    tabsize=2,
+    showstringspaces=false,
+    captionpos=b
+}
+
+\lstdefinestyle{cssstyle}{
+    language={},
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg!10},
+    keywordstyle=\color{googlepurple}\bfseries,
+    stringstyle=\color{googlegreen},
+    commentstyle=\color{gray}\itshape,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{gray!30},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=8pt,
+    tabsize=2,
+    showstringspaces=false,
+    captionpos=b,
+    morekeywords={var, display, grid, flex, position, background, color, font-size, padding, margin, border-radius, transition, transform, animation, opacity, z-index, overflow, backdrop-filter, box-shadow, gap, align-items, justify-content, grid-template-columns, max-width, width, height, inset, pointer-events, cursor, letter-spacing, line-height, text-align, flex-wrap, content, bottom, left}
+}
+
+\lstdefinestyle{jsstyle}{
+    language=Java,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg!10},
+    keywordstyle=\color{googleblue}\bfseries,
+    stringstyle=\color{googlered},
+    commentstyle=\color{gray}\itshape,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{gray!30},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=8pt,
+    tabsize=2,
+    showstringspaces=false,
+    captionpos=b,
+    morekeywords={var, function, this, new, return, if, for, else, null, true, false, window, document, Math, prototype, setTimeout, requestAnimationFrame, addEventListener, forEach, querySelectorAll, getElementById, classList, textContent, scrollY}
+}
+
+% ---- Hyperref setup ----
+\hypersetup{
+    colorlinks=true,
+    linkcolor=googleblue,
+    urlcolor=googlepurple,
+    citecolor=googlegreen,
+    pdfauthor={Lorenzo Califano},
+    pdftitle={Relazione Tecnica -- Portfolio Web Personale},
+}
+
+% ---- Header/Footer ----
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{Portfolio Web -- Lorenzo Califano}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---- Titolo capitoli ----
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{googleblue}}
+{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{darkbg!80!black}}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries}
+{\thesubsection}{1em}{}
+
+% ====================================================================
+\begin{document}
+
+% ---- Frontespizio ----
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+
+    {\Huge\bfseries\color{googleblue} Relazione Tecnica}\\[0.5cm]
+    {\LARGE\bfseries Portfolio Web Personale}\\[1.5cm]
+
+    \rule{\textwidth}{1pt}\\[0.4cm]
+    {\large Un sito web moderno sviluppato con HTML, CSS e JavaScript}\\[0.2cm]
+    \rule{\textwidth}{1pt}\\[2cm]
+
+    {\Large\textbf{Lorenzo Califano}}\\[0.3cm]
+    {\large Studente di Ingegneria Informatica}\\[2cm]
+
+    \begin{tabular}{rl}
+        \textbf{Tecnologie:} & HTML5, CSS3, JavaScript (ES5+) \\
+        \textbf{Design:} & Dark theme, Google-inspired palette \\
+        \textbf{Funzionalit\`a:} & Particle system, PDF viewer, Responsive \\
+        \textbf{Data:} & Febbraio 2026 \\
+    \end{tabular}
+
+    \vfill
+    {\small Anno Accademico 2025/2026}
+\end{titlepage}
+
+% ---- Indice ----
+\tableofcontents
+\newpage
+
+% ====================================================================
+% CAPITOLO 1 -- Introduzione
+% ====================================================================
+\chapter{Introduzione}
+
+\section{Obiettivo del progetto}
+
+Il presente documento descrive nel dettaglio la progettazione e lo sviluppo di un \textbf{portfolio web personale} realizzato per presentare il percorso accademico, le competenze tecniche e i progetti universitari di Lorenzo Califano, studente di Ingegneria Informatica.
+
+Il sito \`e stato concepito come un \textit{single-page application} (SPA) statica, ovvero composta da un'unica pagina HTML che contiene tutte le sezioni navigabili tramite \textit{smooth scrolling}. Questa scelta architetturale garantisce:
+
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Semplicit\`a di deployment}: il sito pu\`o essere ospitato su qualsiasi hosting statico (GitHub Pages, Netlify, Vercel) senza necessit\`a di un backend.
+    \item \textbf{Velocit\`a di caricamento}: l'assenza di framework pesanti come React o Angular permette tempi di caricamento estremamente rapidi.
+    \item \textbf{Manutenibilit\`a}: il codice \`e organizzato in soli tre file (\texttt{index.html}, \texttt{style.css}, \texttt{main.js}), rendendo semplice la modifica e l'aggiornamento.
+    \item \textbf{Compatibilit\`a}: il sito funziona su tutti i browser moderni senza dipendenze esterne (ad eccezione di Google Fonts).
+\end{itemize}
+
+\section{Motivazioni}
+
+La realizzazione di un portfolio web personale risponde a diverse esigenze:
+
+\begin{enumerate}[leftmargin=2cm]
+    \item \textbf{Presentazione professionale}: un portfolio online \`e uno strumento essenziale per uno studente di ingegneria informatica che desidera mostrare le proprie competenze a potenziali datori di lavoro o collaboratori.
+    \item \textbf{Raccolta organizzata dei progetti}: il sito funge da archivio centralizzato per tutti i report e le relazioni prodotte durante il percorso universitario.
+    \item \textbf{Dimostrazione di competenze web}: il progetto stesso dimostra la padronanza di HTML, CSS e JavaScript, tre tecnologie fondamentali per lo sviluppo web.
+    \item \textbf{Esperimento di design}: il progetto ha permesso di esplorare tecniche moderne di design web come \textit{dark theme}, animazioni CSS, \textit{particle systems} e \textit{glassmorphism}.
+\end{enumerate}
+
+\section{Tecnologie utilizzate}
+
+\begin{table}[H]
+\centering
+\caption{Stack tecnologico del progetto}
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{Tecnologia} & \textbf{Versione} & \textbf{Utilizzo} \\
+\midrule
+HTML & 5 & Struttura semantica della pagina \\
+CSS & 3 & Styling, layout, animazioni, responsive design \\
+JavaScript & ES5+ & Interattivit\`a, particle system, PDF modal \\
+Google Fonts & -- & Font ``Inter'' per la tipografia \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Struttura dei file}
+
+Il progetto \`e organizzato in modo minimale e pulito:
+
+\begin{lstlisting}[style=htmlstyle, caption={Struttura del progetto}, label={lst:structure}]
+portfolio-google/
+  index.html              # Pagina principale
+  style.css               # Foglio di stile
+  main.js                 # Logica JavaScript
+  Progetti/
+    Relazione Ingegneria del Software.pdf
+    Relazione Elettrotecnica.pdf
+    Relazione Elettromagnetismo per la
+        Trasmissione dell'Informazione.pdf
+    Relazione di Laboratorio di Automazione 2.pdf
+\end{lstlisting}
+
+Questa struttura ``flat'' (piatta) \`e stata scelta deliberatamente per mantenere il progetto il pi\`u semplice possibile, evitando directory nidificate inutili e garantendo che i percorsi relativi ai PDF siano immediati.
+
+
+% ====================================================================
+% CAPITOLO 2 -- Architettura generale
+% ====================================================================
+\chapter{Architettura generale}
+
+\section{Panoramica}
+
+Il sito \`e costruito secondo il paradigma classico del \textbf{web statico}: un documento HTML che definisce la struttura, un foglio di stile CSS che ne definisce l'aspetto e un file JavaScript che ne gestisce il comportamento dinamico.
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{index.html} & \textbf{style.css} & \textbf{main.js} \\
+\hline
+Struttura & Presentazione & Comportamento \\
+\hline
+Semantica & Layout & Interattivit\`a \\
+\hline
+Contenuto & Colori & Animazioni \\
+\hline
+Accessibilit\`a & Responsive & Eventi \\
+\hline
+\end{tabular}
+\caption{Separazione delle responsabilit\`a (Separation of Concerns)}
+\end{figure}
+
+\section{Flusso di caricamento}
+
+Quando un utente visita il sito, il browser esegue i seguenti passaggi:
+
+\begin{enumerate}[leftmargin=2cm]
+    \item \textbf{Parsing HTML}: il browser legge \texttt{index.html} e costruisce il DOM (Document Object Model).
+    \item \textbf{Download risorse}: vengono scaricati in parallelo il foglio di stile \texttt{style.css} e il font ``Inter'' da Google Fonts.
+    \item \textbf{Rendering CSS}: il browser applica gli stili al DOM, calcolando il layout di ogni elemento.
+    \item \textbf{Esecuzione JavaScript}: lo script \texttt{main.js}, caricato alla fine del \texttt{<body>}, viene eseguito:
+    \begin{itemize}
+        \item Inizializza il \textit{particle system} nel canvas dell'hero.
+        \item Configura gli \textit{event listener} per scroll, resize e mouse.
+        \item Imposta l'\texttt{IntersectionObserver} per le animazioni di \textit{reveal}.
+        \item Registra le funzioni globali per il modal dei PDF.
+    \end{itemize}
+    \item \textbf{Animazioni iniziali}: le animazioni CSS dell'hero (\texttt{fadeUp}) partono automaticamente con ritardi scaglionati.
+\end{enumerate}
+
+\section{Sezioni della pagina}
+
+La pagina \`e suddivisa in cinque sezioni principali, ciascuna identificata da un \texttt{id} univoco per la navigazione interna:
+
+\begin{table}[H]
+\centering
+\caption{Sezioni del sito}
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{Sezione} & \textbf{ID HTML} & \textbf{Descrizione} \\
+\midrule
+Navbar & \texttt{\#navbar} & Barra di navigazione fissa con effetto di trasparenza \\
+Hero & \texttt{\#hero} & Sezione di benvenuto con particle system animato \\
+About & \texttt{\#about} & Presentazione personale e griglia delle competenze \\
+Projects & \texttt{\#projects} & Griglia di card dei progetti universitari \\
+Contact & \texttt{\#contact} & Link di contatto (email e GitHub) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Ogni sezione \`e progettata per occupare un'ampia porzione del viewport, con ampi spazi di padding verticale (\texttt{6rem} = 96px) per dare respiro al contenuto e guidare l'occhio dell'utente.
+
+
+% ====================================================================
+% CAPITOLO 3 -- Struttura HTML
+% ====================================================================
+\chapter{Struttura HTML}
+
+\section{Doctype e head}
+
+Il documento inizia con la dichiarazione HTML5 standard e un \texttt{<head>} contenente i metadati essenziali:
+
+\begin{lstlisting}[style=htmlstyle, caption={Head del documento}]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Lorenzo Califano -- Computer Engineering
+                   Student Portfolio">
+    <title>Lorenzo Califano -- Portfolio</title>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?
+          family=Inter:wght@300;400;500;600;700
+          &display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+\end{lstlisting}
+
+Aspetti notevoli:
+
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{\texttt{lang="en"}}: l'attributo indica che il contenuto \`e in inglese, per coerenza internazionale.
+    \item \textbf{\texttt{viewport meta tag}}: essenziale per il responsive design, garantisce che il sito si adatti correttamente su dispositivi mobili.
+    \item \textbf{\texttt{preconnect}}: i due link di preconnect stabiliscono connessioni anticipate ai server di Google Fonts, riducendo la latenza di caricamento del font.
+    \item \textbf{Font Inter}: \`e stato scelto il font \textit{Inter} con cinque pesi (300--700) per la sua eccellente leggibilit\`a a schermo e il design moderno e neutro.
+\end{itemize}
+
+\section{Navbar}
+
+La barra di navigazione \`e una struttura semplice ma efficace:
+
+\begin{lstlisting}[style=htmlstyle, caption={Struttura della Navbar}]
+<nav id="navbar">
+    <div class="nav-container">
+        <a href="#hero" class="nav-logo">LC</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+\end{lstlisting}
+
+Il logo ``LC'' (iniziali di Lorenzo Califano) \`e un link che riporta alla sezione hero. I link di navigazione utilizzano ancore interne (\texttt{\#about}, \texttt{\#projects}, \texttt{\#contact}) che, grazie alla propriet\`a CSS \texttt{scroll-behavior: smooth}, producono uno scorrimento fluido verso la sezione corrispondente.
+
+\section{Hero Section}
+
+La sezione hero \`e il punto focale del sito:
+
+\begin{lstlisting}[style=htmlstyle, caption={Struttura dell'Hero}]
+<section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+        <p class="hero-greeting">Hi, I'm</p>
+        <h1 class="hero-name">Lorenzo Califano</h1>
+        <p class="hero-tagline">
+            Computer Engineering Student</p>
+        <a href="#projects" class="hero-cta">
+            Explore my projects</a>
+    </div>
+</section>
+\end{lstlisting}
+
+L'elemento \texttt{<canvas>} occupa l'intera sezione hero e funge da sfondo animato per il \textit{particle system}. Il contenuto testuale \`e sovrapposto al canvas tramite \texttt{z-index}, creando un effetto di profondit\`a. Il pulsante ``Explore my projects'' \`e una \textit{call-to-action} (CTA) che invita l'utente a scorrere verso i progetti.
+
+\section{About Section}
+
+La sezione About presenta una griglia a due colonne:
+
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Colonna sinistra}: due paragrafi di testo che descrivono il percorso e gli interessi dello studente.
+    \item \textbf{Colonna destra}: una griglia 3$\times$2 di ``skill item'' che mostrano le competenze principali con icone Unicode e etichette (Software Dev, Problem Solving, Data Analysis, Electronics, Teamwork, Research).
+\end{itemize}
+
+Ogni skill item ha un effetto hover che lo solleva leggermente (\texttt{translateY(-4px)}) con un'ombra blu sottile, dando un feedback visivo all'utente.
+
+\section{Projects Section}
+
+La sezione dei progetti \`e il cuore del portfolio. Contiene una griglia responsiva di \textbf{project card}, ciascuna rappresentante un progetto o corso universitario.
+
+\subsection{Struttura di una card}
+
+Ogni card segue la stessa struttura HTML:
+
+\begin{lstlisting}[style=htmlstyle, caption={Struttura di una project card}]
+<div class="project-card" data-color="blue">
+    <div class="card-accent"></div>
+    <div class="card-body">
+        <h3 class="card-title">Software Engineering</h3>
+        <p class="card-desc">
+            Full software development lifecycle
+            report...
+        </p>
+        <div class="card-tools">
+            <span class="tool-badge">Python</span>
+            <span class="tool-badge">SQL</span>
+        </div>
+        <button class="card-btn"
+            onclick="openPdf('...', this)">
+            Read the report &rarr;
+        </button>
+    </div>
+</div>
+\end{lstlisting}
+
+Elementi chiave:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{\texttt{data-color}}: attributo personalizzato che determina la palette cromatica della card (accent, badge, bottone). I colori disponibili sono: \textcolor{googleblue}{blue}, \textcolor{googlered}{red}, \textcolor{googlegreen}{green}, \textcolor{googleyellow}{yellow}, \textcolor{googlepurple}{purple}, \textcolor{orange}{orange}, \textcolor{teal}{teal}, \textcolor{pink}{pink}.
+    \item \textbf{\texttt{card-accent}}: una sottile linea colorata (4px) nella parte superiore della card.
+    \item \textbf{\texttt{tool-badge}}: badge che indicano le tecnologie utilizzate nel progetto.
+    \item \textbf{\texttt{card-btn}}: pulsante che apre il PDF della relazione in un modal overlay.
+\end{itemize}
+
+\subsection{Card ``In Progress''}
+
+Le card dei corsi ancora in svolgimento hanno una classe aggiuntiva \texttt{in-progress} e mostrano un badge animato:
+
+\begin{lstlisting}[style=htmlstyle, caption={Card in progress}]
+<div class="project-card in-progress"
+     data-color="yellow">
+    <div class="card-accent"></div>
+    <div class="card-body">
+        <span class="card-status">In progress</span>
+        <h3 class="card-title">Databases</h3>
+        ...
+    </div>
+</div>
+\end{lstlisting}
+
+Il badge ``In progress'' presenta un pallino giallo con un'animazione \texttt{pulse} che lo fa lampeggiare, attirando l'attenzione sul fatto che il progetto non \`e ancora concluso.
+
+\subsection{Elenco completo dei progetti}
+
+\begin{table}[H]
+\centering
+\caption{Progetti presenti nel portfolio}
+\begin{tabularx}{\textwidth}{l l l X}
+\toprule
+\textbf{Progetto} & \textbf{Colore} & \textbf{Stato} & \textbf{Tecnologie} \\
+\midrule
+Software Engineering & \textcolor{googleblue}{Blue} & Completo & Enterprise Architect, Python, SQL, Docker, GitHub \\
+Electrical Engineering & \textcolor{googlered}{Red} & Completo & MATLAB, PID Control \\
+Electromagnetics & \textcolor{googlegreen}{Green} & Completo & COMSOL Multiphysics \\
+Databases & \textcolor{googleyellow}{Yellow} & In progress & SQL \\
+Automation Laboratory & \textcolor{googlepurple}{Purple} & Completo & C, STM32CubeIDE, STM32H755ZI-Q, PID Control \\
+ShieldUp & \textcolor{orange}{Orange} & Completo & Business Planning, Team Leadership \\
+Web Technologies & \textcolor{teal}{Teal} & In progress & Laravel, PHP, HTML, JavaScript \\
+Mobile Programming & \textcolor{pink}{Pink} & In progress & Coming soon \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Contact Section}
+
+La sezione contatti presenta due link sotto forma di card interattive: un indirizzo email e un link al profilo GitHub. Entrambi utilizzano icone Unicode per una resa visiva immediata senza dipendere da librerie di icone esterne.
+
+\section{PDF Modal}
+
+In fondo al documento \`e presente la struttura del modal per la visualizzazione dei PDF:
+
+\begin{lstlisting}[style=htmlstyle, caption={Struttura del PDF Modal}]
+<div id="pdf-modal" class="modal-overlay"
+     onclick="closePdfOutside(event)">
+    <div class="modal-container">
+        <div class="modal-header">
+            <span id="modal-title"></span>
+            <button class="modal-close"
+                    onclick="closePdf()">&times;
+            </button>
+        </div>
+        <iframe id="pdf-viewer" src=""
+                title="PDF Viewer"></iframe>
+    </div>
+</div>
+\end{lstlisting}
+
+Il modal utilizza un \texttt{<iframe>} per incorporare il visualizzatore PDF nativo del browser, eliminando la necessit\`a di librerie JavaScript esterne come PDF.js.
+
+
+% ====================================================================
+% CAPITOLO 4 -- Foglio di stile CSS
+% ====================================================================
+\chapter{Foglio di stile CSS}
+
+\section{Variabili CSS (Custom Properties)}
+
+Il design system \`e costruito attorno a un set di variabili CSS definite nella pseudo-classe \texttt{:root}:
+
+\begin{lstlisting}[style=cssstyle, caption={Variabili CSS}]
+:root {
+    --bg: #0f0f13;
+    --bg-light: #18181f;
+    --surface: #1e1e27;
+    --text: #e4e4e8;
+    --text-muted: #9a9ab0;
+    --blue: #4285F4;
+    --red: #EA4335;
+    --yellow: #FBBC05;
+    --green: #34A853;
+    --purple: #A142F4;
+    --orange: #FF6D00;
+    --teal: #00BCD4;
+    --pink: #E91E8C;
+    --radius: 12px;
+    --transition: .3s ease;
+}
+\end{lstlisting}
+
+Questo approccio offre diversi vantaggi:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Consistenza}: ogni colore \`e definito una sola volta e riutilizzato ovunque.
+    \item \textbf{Manutenibilit\`a}: per cambiare un colore nell'intero sito basta modificare una variabile.
+    \item \textbf{Leggibilit\`a}: nomi semantici come \texttt{--surface} e \texttt{--text-muted} rendono il codice auto-documentante.
+\end{itemize}
+
+La palette cromatica \`e ispirata ai \textbf{colori di Google} (blu, rosso, giallo, verde), arricchita con viola, arancione, teal e rosa per i progetti aggiuntivi.
+
+\section{Dark Theme}
+
+L'intero sito utilizza un \textbf{dark theme} con tre livelli di profondit\`a:
+\begin{enumerate}[leftmargin=2cm]
+    \item \texttt{--bg} (\texttt{\#0f0f13}): sfondo principale, quasi nero.
+    \item \texttt{--bg-light} (\texttt{\#18181f}): sfondo delle sezioni alternate (About, Contact).
+    \item \texttt{--surface} (\texttt{\#1e1e27}): sfondo delle card e degli elementi interattivi.
+\end{enumerate}
+
+Questa gerarchia di grigi crea un senso di profondit\`a e separazione visiva tra i diversi livelli dell'interfaccia, una tecnica nota come \textit{elevation} nel Material Design.
+
+\section{Reset e stili base}
+
+Lo stile inizia con un CSS reset universale:
+
+\begin{lstlisting}[style=cssstyle, caption={CSS Reset}]
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+\end{lstlisting}
+
+Il \texttt{box-sizing: border-box} \`e particolarmente importante: garantisce che padding e bordi siano inclusi nelle dimensioni dell'elemento, semplificando enormemente il calcolo dei layout.
+
+\section{Navbar con effetto scroll}
+
+La navbar \`e fissa in alto (\texttt{position: fixed}) e inizialmente trasparente. Quando l'utente scorre la pagina, JavaScript aggiunge la classe \texttt{.scrolled} che attiva:
+
+\begin{lstlisting}[style=cssstyle, caption={Effetto navbar scrolled}]
+#navbar.scrolled {
+    background: rgba(15, 15, 19, .92);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, .35);
+}
+\end{lstlisting}
+
+L'effetto \texttt{backdrop-filter: blur(12px)} crea un effetto \textit{frosted glass} (vetro smerigliato) che lascia intravedere il contenuto sottostante, una tecnica molto popolare nel design moderno (utilizzata anche da Apple in macOS e iOS).
+
+I link della navbar hanno un \textit{underline} animato realizzato con lo pseudo-elemento \texttt{::after}:
+
+\begin{lstlisting}[style=cssstyle, caption={Animazione underline dei link}]
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--blue);
+    transition: width var(--transition);
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+\end{lstlisting}
+
+\section{Hero e animazione fadeUp}
+
+La sezione hero occupa l'intero viewport (\texttt{height: 100vh}) e utilizza \texttt{flexbox} per centrare il contenuto. Il nome ``Lorenzo Califano'' ha un effetto di testo con gradiente:
+
+\begin{lstlisting}[style=cssstyle, caption={Testo con gradiente}]
+.hero-name {
+    background: linear-gradient(135deg,
+        var(--blue), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+\end{lstlisting}
+
+Questa tecnica applica un gradiente come ``colore'' del testo, un effetto visivamente accattivante che sarebbe impossibile con la semplice propriet\`a \texttt{color}.
+
+Gli elementi dell'hero si animano in sequenza grazie a \textit{delay} incrementali:
+
+\begin{lstlisting}[style=cssstyle, caption={Animazione staggered}]
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.hero-greeting  { animation-delay: .2s; }
+.hero-name      { animation-delay: .4s; }
+.hero-tagline   { animation-delay: .6s; }
+.hero-cta       { animation-delay: .8s; }
+\end{lstlisting}
+
+Ogni elemento parte con \texttt{opacity: 0} e \texttt{translateY(20px)} e scivola verso l'alto diventando visibile, con un ritardo di 0.2 secondi tra un elemento e il successivo. Questo crea un elegante effetto ``a cascata''.
+
+\section{Sistema di grid per le card}
+
+Le project card utilizzano CSS Grid con la funzione \texttt{auto-fit}:
+
+\begin{lstlisting}[style=cssstyle, caption={Grid responsiva per i progetti}]
+.projects-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+\end{lstlisting}
+
+Questa singola linea di CSS \`e estremamente potente: crea una griglia che si adatta automaticamente al numero di colonne in base alla larghezza disponibile. Ogni card ha una larghezza minima di 300px e si espande per riempire lo spazio. Su schermi larghi si avranno 3 colonne, su tablet 2, su mobile 1, \textbf{senza necessit\`a di media query}.
+
+\section{Colori delle card tramite data attributes}
+
+Ogni card ha un colore unico determinato dall'attributo \texttt{data-color}. I CSS utilizzano selettori di attributo per applicare il colore corretto a tre elementi: accent (linea colorata in alto), tool-badge (badge delle tecnologie) e card-btn (bottone):
+
+\begin{lstlisting}[style=cssstyle, caption={Esempio: stile per il colore teal}]
+.project-card[data-color="teal"] .card-accent {
+    background: var(--teal);
+}
+.project-card[data-color="teal"] .tool-badge {
+    background: rgba(0, 188, 212, .1);
+    color: var(--teal);
+    border-color: rgba(0, 188, 212, .2);
+}
+.project-card[data-color="teal"] .card-btn {
+    color: var(--teal);
+}
+\end{lstlisting}
+
+Questo pattern si ripete per tutti gli 8 colori disponibili. L'uso di sfondi semi-trasparenti (\texttt{rgba}) per i badge crea un effetto sottile e coerente con il dark theme.
+
+\section{Modal overlay per i PDF}
+
+Il modal \`e inizialmente invisibile (\texttt{opacity: 0}, \texttt{pointer-events: none}) e si attiva con la classe \texttt{.active}:
+
+\begin{lstlisting}[style=cssstyle, caption={Animazione del modal}]
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .85);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease;
+}
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+.modal-container {
+    transform: scale(.92);
+    transition: transform .35s ease;
+}
+.modal-overlay.active .modal-container {
+    transform: scale(1);
+}
+\end{lstlisting}
+
+L'animazione combina due effetti: l'overlay sfuma da trasparente a opaco, mentre il container del modal ``cresce'' da scala 0.92 a 1, creando un effetto di zoom-in molto fluido.
+
+\section{Responsive Design}
+
+Il sito utilizza due breakpoint principali:
+
+\begin{table}[H]
+\centering
+\caption{Breakpoint responsivi}
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{Breakpoint} & \textbf{Target} & \textbf{Modifiche} \\
+\midrule
+\texttt{768px} & Tablet & About grid $\to$ 1 colonna, Projects grid $\to$ 1 colonna, Contact $\to$ verticale \\
+\texttt{480px} & Mobile & Skills grid $\to$ 2 colonne, Hero name $\to$ font-size ridotto \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Grazie all'uso di \texttt{auto-fit} nella griglia dei progetti, questa si adatta automaticamente senza media query dedicate. Le media query sono necessarie solo per la sezione About e per aggiustamenti tipografici.
+
+
+% ====================================================================
+% CAPITOLO 5 -- JavaScript
+% ====================================================================
+\chapter{Logica JavaScript}
+
+\section{Architettura IIFE}
+
+L'intero codice JavaScript \`e racchiuso in una \textbf{IIFE} (Immediately Invoked Function Expression):
+
+\begin{lstlisting}[style=jsstyle, caption={Pattern IIFE}]
+(function () {
+    'use strict';
+    // tutto il codice qui
+})();
+\end{lstlisting}
+
+Questo pattern ha due scopi fondamentali:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Incapsulamento}: tutte le variabili e funzioni sono confinate nello scope della funzione, evitando di inquinare il namespace globale.
+    \item \textbf{Strict mode}: la direttiva \texttt{'use strict'} attiva controlli pi\`u rigorosi da parte del motore JavaScript, prevenendo errori comuni come l'uso di variabili non dichiarate.
+\end{itemize}
+
+\section{Particle System}
+
+Il particle system \`e la funzionalit\`a pi\`u complessa del sito. Crea un'animazione a schermo intero di particelle colorate che si muovono lentamente e sono collegate da linee semi-trasparenti quando si avvicinano.
+
+\subsection{Inizializzazione}
+
+\begin{lstlisting}[style=jsstyle, caption={Costruttore Particle}]
+function Particle() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2.5 + .8;
+    this.speedX = (Math.random() - 0.5) * .6;
+    this.speedY = (Math.random() - 0.5) * .6;
+    this.color = colors[Math.floor(
+        Math.random() * colors.length)];
+    this.alpha = Math.random() * .5 + .15;
+}
+\end{lstlisting}
+
+Ogni particella ha:
+\begin{itemize}[leftmargin=2cm]
+    \item Posizione casuale (\texttt{x}, \texttt{y}) all'interno del canvas.
+    \item Dimensione (\texttt{size}) tra 0.8 e 3.3 pixel.
+    \item Velocit\`a (\texttt{speedX}, \texttt{speedY}) contenuta ($\pm 0.3$ pixel/frame) per un movimento lento e fluido.
+    \item Colore casuale scelto tra i quattro colori Google.
+    \item Trasparenza (\texttt{alpha}) tra 0.15 e 0.65 per un effetto etereo.
+\end{itemize}
+
+Il numero di particelle \`e calcolato dinamicamente in base alla dimensione dello schermo:
+
+\begin{lstlisting}[style=jsstyle, caption={Calcolo numero particelle}]
+var count = Math.min(
+    Math.floor((canvas.width * canvas.height)
+        / 8000),
+    160
+);
+\end{lstlisting}
+
+Su uno schermo Full HD (1920$\times$1080) si avranno circa 160 particelle (il massimo), mentre su un dispositivo mobile se ne avranno proporzionalmente meno, garantendo buone prestazioni.
+
+\subsection{Movimento e wrapping}
+
+Le particelle si muovono in modo lineare e, quando escono dai bordi del canvas, riappaiono dal lato opposto (\textit{toroidal wrapping}):
+
+\begin{lstlisting}[style=jsstyle, caption={Aggiornamento posizione}]
+Particle.prototype.update = function () {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x > canvas.width) this.x = 0;
+    if (this.x < 0) this.x = canvas.width;
+    if (this.y > canvas.height) this.y = 0;
+    if (this.y < 0) this.y = canvas.height;
+};
+\end{lstlisting}
+
+\subsection{Linee di connessione}
+
+Due tipi di linee collegano le particelle:
+
+\begin{enumerate}[leftmargin=2cm]
+    \item \textbf{Linee inter-particella}: con un raggio di 120px, linee bianche semi-trasparenti la cui opacit\`a diminuisce linearmente con la distanza.
+    \item \textbf{Linee mouse-particella}: con un raggio di 180px, linee blu che collegano la posizione del cursore alle particelle vicine, creando un effetto interattivo.
+\end{enumerate}
+
+La complessit\`a computazionale del controllo delle linee inter-particella \`e $O(n^2)$, dove $n$ \`e il numero di particelle. Con $n = 160$, si effettuano circa 12.720 controlli di distanza per frame, un carico gestibile per i browser moderni tramite l'API Canvas2D.
+
+\subsection{Ciclo di animazione}
+
+L'animazione utilizza \texttt{requestAnimationFrame}, il metodo standard per le animazioni fluide nei browser:
+
+\begin{lstlisting}[style=jsstyle, caption={Loop di animazione}]
+function animate() {
+    ctx.clearRect(0, 0,
+        canvas.width, canvas.height);
+    for (var i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+    }
+    drawLines();
+    drawMouseLines();
+    requestAnimationFrame(animate);
+}
+\end{lstlisting}
+
+A differenza di \texttt{setInterval}, \texttt{requestAnimationFrame} sincronizza l'animazione con il refresh rate del monitor (tipicamente 60 FPS), evitando frame skip e tearing.
+
+\section{Navbar scroll effect}
+
+Un semplice event listener cambia l'aspetto della navbar in base allo scroll:
+
+\begin{lstlisting}[style=jsstyle, caption={Effetto scroll navbar}]
+window.addEventListener('scroll', function () {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+\end{lstlisting}
+
+Quando l'utente scorre pi\`u di 50px, la navbar diventa semi-opaca con effetto blur, garantendo che il contenuto sottostante rimanga leggibile senza distrarre dall'header di navigazione.
+
+\section{Scroll Reveal con IntersectionObserver}
+
+Le animazioni di ingresso degli elementi sono gestite dall'\texttt{IntersectionObserver} API:
+
+\begin{lstlisting}[style=jsstyle, caption={IntersectionObserver per scroll reveal}]
+var observer = new IntersectionObserver(
+    function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList
+                    .add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    },
+    { threshold: 0.15 }
+);
+\end{lstlisting}
+
+Questa API \`e significativamente pi\`u performante rispetto al tradizionale approccio con \texttt{scroll} event + \texttt{getBoundingClientRect()}, poich\'e i calcoli di intersezione sono eseguiti dal browser in modo asincrono, fuori dal thread principale.
+
+Aspetti chiave:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{\texttt{threshold: 0.15}}: l'elemento viene rivelato quando il 15\% della sua area \`e visibile nel viewport.
+    \item \textbf{\texttt{unobserve}}: dopo la prima attivazione, l'elemento smette di essere osservato --- l'animazione avviene una sola volta.
+    \item Gli elementi target includono: \texttt{.about-grid}, \texttt{.project-card}, \texttt{.contact-links}, \texttt{.section-title}, \texttt{.section-subtitle}.
+\end{itemize}
+
+\section{PDF Modal}
+
+Il sistema di gestione del modal PDF comprende tre funzioni globali:
+
+\subsection{Apertura}
+
+\begin{lstlisting}[style=jsstyle, caption={Funzione openPdf}]
+window.openPdf = function (path, btnElement) {
+    var card = btnElement.closest('.project-card');
+    var title = card ?
+        card.querySelector('.card-title')
+            .textContent : 'Relazione';
+    modalTitle.textContent = title;
+    viewer.src = path;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+};
+\end{lstlisting}
+
+La funzione:
+\begin{enumerate}[leftmargin=2cm]
+    \item Risale al \texttt{.project-card} contenitore usando \texttt{closest()}.
+    \item Estrae il titolo dalla card per impostare l'header del modal.
+    \item Imposta il percorso del PDF come \texttt{src} dell'iframe.
+    \item Attiva il modal aggiungendo la classe \texttt{active}.
+    \item Blocca lo scroll del body per evitare che l'utente scorra la pagina sottostante.
+\end{enumerate}
+
+\subsection{Chiusura}
+
+La chiusura pu\`o avvenire in tre modi:
+\begin{itemize}[leftmargin=2cm]
+    \item Click sul pulsante ``$\times$''.
+    \item Click sull'overlay esterno (fuori dal container).
+    \item Pressione del tasto ESC sulla tastiera.
+\end{itemize}
+
+In tutti i casi, l'\texttt{src} dell'iframe viene svuotato dopo 350ms (il tempo della transizione CSS), evitando che il PDF continui a essere renderizzato in background.
+
+
+% ====================================================================
+% CAPITOLO 6 -- Design e UX
+% ====================================================================
+\chapter{Design e User Experience}
+
+\section{Filosofia di design}
+
+Il design del portfolio segue alcuni principi fondamentali:
+
+\begin{enumerate}[leftmargin=2cm]
+    \item \textbf{Minimalismo funzionale}: ogni elemento ha uno scopo preciso. Non ci sono decorazioni superflue.
+    \item \textbf{Dark theme}: riduce l'affaticamento visivo, \`e moderno e professionale.
+    \item \textbf{Colori come identit\`a}: ogni progetto ha un colore unico che lo rende immediatamente riconoscibile.
+    \item \textbf{Micro-interazioni}: hover effects, transizioni fluide e animazioni di reveal rendono l'esperienza viva e responsiva.
+    \item \textbf{Content-first}: il design mette in primo piano il contenuto, non se stesso.
+\end{enumerate}
+
+\section{Palette cromatica}
+
+La scelta dei colori non \`e casuale. I quattro colori primari (\textcolor{googleblue}{blu}, \textcolor{googlered}{rosso}, \textcolor{googleyellow}{giallo}, \textcolor{googlegreen}{verde}) sono i colori del logo Google, scelti per la loro familiarit\`a e il loro impatto visivo. I colori aggiuntivi (\textcolor{googlepurple}{viola}, \textcolor{orange}{arancione}, \textcolor{teal}{teal}, \textcolor{pink}{rosa}) sono stati selezionati per garantire un buon contrasto reciproco e con lo sfondo scuro.
+
+\begin{table}[H]
+\centering
+\caption{Palette cromatica completa}
+\begin{tabularx}{\textwidth}{l l l X}
+\toprule
+\textbf{Nome} & \textbf{Codice} & \textbf{Progetto} & \textbf{Motivazione} \\
+\midrule
+Blue & \texttt{\#4285F4} & Software Eng. & Professionalit\`a, tecnologia \\
+Red & \texttt{\#EA4335} & Electrical Eng. & Energia, elettricit\`a \\
+Green & \texttt{\#34A853} & Electromagnetics & Scienza, natura \\
+Yellow & \texttt{\#FBBC05} & Databases & Attenzione (in progress) \\
+Purple & \texttt{\#A142F4} & Automation Lab & Innovazione, robotica \\
+Orange & \texttt{\#FF6D00} & ShieldUp & Imprenditorialit\`a \\
+Teal & \texttt{\#00BCD4} & Web Technologies & Web, modernit\`a \\
+Pink & \texttt{\#E91E8C} & Mobile Prog. & Creativit\`a, mobile \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Tipografia}
+
+Il font \textbf{Inter} \`e stato scelto per diverse ragioni:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Progettato per schermi}: a differenza di font tradizionali, Inter \`e stato specificamente ottimizzato per la lettura su display digitali.
+    \item \textbf{Ampia gamma di pesi}: con pesi da 300 (light) a 700 (bold), permette una chiara gerarchia tipografica.
+    \item \textbf{Neutrale e professionale}: il suo design senza serif \`e pulito e moderno senza essere invasivo.
+    \item \textbf{Open source}: \`e disponibile gratuitamente tramite Google Fonts.
+\end{itemize}
+
+La gerarchia tipografica del sito \`e cos\`\i{} strutturata:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Hero name}: \texttt{clamp(2.4rem, 6vw, 4.2rem)}, peso 700 --- il testo pi\`u grande, fluido tra 38px e 67px.
+    \item \textbf{Section titles}: \texttt{2rem}, peso 700 --- titoli delle sezioni.
+    \item \textbf{Card titles}: \texttt{1.15rem}, peso 600 --- titoli dei progetti.
+    \item \textbf{Body text}: \texttt{0.95rem}, peso 400, colore \texttt{--text-muted} --- testo descrittivo.
+    \item \textbf{Tool badges}: \texttt{0.7rem}, peso 500 --- etichette tecnologie.
+\end{itemize}
+
+\section{Accessibilit\`a}
+
+Sebbene il sito non implementi un sistema di accessibilit\`a completo, sono state adottate alcune buone pratiche:
+
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{HTML semantico}: uso di \texttt{<nav>}, \texttt{<section>}, \texttt{<h1>}--\texttt{<h3>}, \texttt{<footer>}.
+    \item \textbf{Contrasto}: il testo chiaro su sfondo scuro garantisce un rapporto di contrasto adeguato.
+    \item \textbf{Link significativi}: tutti i link hanno uno stato hover visibile.
+    \item \textbf{Chiusura modale con tastiera}: il modal PDF si pu\`o chiudere con il tasto ESC.
+    \item \textbf{Attributi \texttt{rel="noopener"}}: sui link esterni per prevenire attacchi di \textit{tabnapping}.
+\end{itemize}
+
+\section{Performance}
+
+Il sito \`e estremamente leggero:
+\begin{itemize}[leftmargin=2cm]
+    \item \texttt{index.html}: $\sim$12 KB
+    \item \texttt{style.css}: $\sim$12 KB
+    \item \texttt{main.js}: $\sim$6 KB
+    \item \textbf{Totale (senza PDF)}: $\sim$30 KB + font Google
+\end{itemize}
+
+Non sono presenti dipendenze npm, bundler, o file di configurazione. Il sito \`e immediatamente eseguibile aprendo \texttt{index.html} in un browser, senza alcun processo di build.
+
+
+% ====================================================================
+% CAPITOLO 7 -- Considerazioni finali
+% ====================================================================
+\chapter{Considerazioni finali}
+
+\section{Punti di forza}
+
+\begin{enumerate}[leftmargin=2cm]
+    \item \textbf{Zero dipendenze}: il sito non richiede alcun framework o libreria esterna (a parte Google Fonts). Questo lo rende resistente all'obsolescenza e facilmente manutenibile nel tempo.
+    \item \textbf{Performance eccellente}: con meno di 30 KB di codice (esclusi i PDF), il sito si carica istantaneamente anche su connessioni lente.
+    \item \textbf{Codice pulito e leggibile}: la separazione netta tra HTML, CSS e JavaScript rende il progetto facile da comprendere e modificare.
+    \item \textbf{Design coerente}: l'uso sistematico di variabili CSS e un data-attribute system per i colori garantisce coerenza visiva.
+    \item \textbf{Responsive senza framework}: il sito si adatta a qualsiasi dispositivo grazie a CSS Grid, Flexbox e un uso intelligente delle media query.
+    \item \textbf{Interattivit\`a sofisticata}: il particle system e le animazioni di scroll giving rendono il sito memorabile senza appesantirlo.
+\end{enumerate}
+
+\section{Possibili miglioramenti}
+
+\begin{enumerate}[leftmargin=2cm]
+    \item \textbf{Service Worker}: implementare un Service Worker per permettere la navigazione offline (PWA).
+    \item \textbf{Dark/Light toggle}: aggiungere la possibilit\`a di passare a un tema chiaro per gli utenti che lo preferiscono.
+    \item \textbf{Compressione immagini}: se in futuro si aggiungeranno immagini, utilizzare formati moderni come WebP o AVIF.
+    \item \textbf{Lazy loading PDF}: caricare i PDF solo quando il modal viene aperto, non al click (gi\`a implementato grazie all'iframe).
+    \item \textbf{Analytics}: integrare un sistema di analytics rispettoso della privacy (es. Plausible o Umami) per monitorare le visite.
+    \item \textbf{i18n}: supporto multilingua italiano/inglese con un toggle dedicato.
+    \item \textbf{Animazioni ridotte}: rispettare la media query \texttt{prefers-reduced-motion} per gli utenti con sensibilit\`a alle animazioni.
+\end{enumerate}
+
+\section{Competenze dimostrate}
+
+Lo sviluppo di questo portfolio ha richiesto e dimostrato le seguenti competenze:
+
+\begin{table}[H]
+\centering
+\caption{Competenze tecniche dimostrate}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{Area} & \textbf{Competenze} \\
+\midrule
+HTML & Struttura semantica, accessibilit\`a, SEO base, meta tag \\
+CSS & Variabili custom, Grid, Flexbox, animazioni, dark theme, responsive design, pseudo-elementi, backdrop-filter \\
+JavaScript & IIFE, Canvas API, IntersectionObserver, DOM manipulation, event handling, prototype-based OOP \\
+Design & Dark theme, palette cromatica, tipografia, micro-interazioni, UX principles \\
+Architettura & Separation of concerns, data attributes, progressive enhancement \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Conclusione}
+
+Il portfolio web rappresenta un progetto completo che, nonostante la sua apparente semplicit\`a, racchiude numerose tecniche avanzate di sviluppo web. Dalla gestione di un particle system in tempo reale all'uso di IntersectionObserver per le animazioni di scroll, passando per un design system basato su variabili CSS e data attributes, ogni aspetto del progetto \`e stato curato per offrire un'esperienza utente premium mantenendo il codice minimale e manutenibile.
+
+Il risultato \`e un sito che si carica in millisecondi, funziona su qualsiasi dispositivo, non richiede alcun processo di build, e presenta in modo efficace e professionale il percorso accademico e le competenze dello studente.
+
+\end{document}

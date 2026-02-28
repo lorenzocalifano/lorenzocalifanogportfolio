@@ -50,7 +50,6 @@
 
     function initParticles() {
         particles = [];
-        // piu particelle su schermi grandi
         var count = Math.min(Math.floor((canvas.width * canvas.height) / 8000), 160);
         for (var i = 0; i < count; i++) {
             particles.push(new Particle());
@@ -75,7 +74,7 @@
         }
     }
 
-    // linea dal mouse alla particella vicina
+    // linea dal mouse alle particelle vicine
     function drawMouseLines() {
         if (!mouse.x) return;
         for (var i = 0; i < particles.length; i++) {

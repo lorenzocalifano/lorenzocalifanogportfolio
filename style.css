@@ -23,6 +23,8 @@
     --green: #34A853;
     --purple: #A142F4;
     --orange: #FF6D00;
+    --teal: #00BCD4;
+    --pink: #E91E8C;
     --radius: 12px;
     --transition: .3s ease;
 }
@@ -334,6 +336,14 @@ ul {
     background: var(--orange);
 }
 
+.project-card[data-color="teal"] .card-accent {
+    background: var(--teal);
+}
+
+.project-card[data-color="pink"] .card-accent {
+    background: var(--pink);
+}
+
 .card-body {
     padding: 1.8rem 1.5rem;
 }
@@ -433,6 +443,18 @@ ul {
     border-color: rgba(255, 109, 0, .2);
 }
 
+.project-card[data-color="teal"] .tool-badge {
+    background: rgba(0, 188, 212, .1);
+    color: var(--teal);
+    border-color: rgba(0, 188, 212, .2);
+}
+
+.project-card[data-color="pink"] .tool-badge {
+    background: rgba(233, 30, 140, .1);
+    color: var(--pink);
+    border-color: rgba(233, 30, 140, .2);
+}
+
 .card-btn {
     background: none;
     border: none;
@@ -459,6 +481,14 @@ ul {
 
 .project-card[data-color="orange"] .card-btn {
     color: var(--orange);
+}
+
+.project-card[data-color="teal"] .card-btn {
+    color: var(--teal);
+}
+
+.project-card[data-color="pink"] .card-btn {
+    color: var(--pink);
 }
 
 .card-btn:hover {
